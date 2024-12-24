@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const Home = React.lazy(() => import('@/pages/home'));
+const Home = React.lazy(() => import('../pages/home'));
 
 const Router: React.FC = () => {
   return (

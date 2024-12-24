@@ -1,4 +1,3 @@
-import { Button } from "../ui/button"
 import logo from "../../assets/nixtour_logo.svg"
 
 export function Navbar() {
