@@ -34,7 +34,7 @@ export default function FlightBooking() {
     };
 
     return (
-        <div className="min-h-screen p-4">
+        <div className=" p-4">
             <div className="max-w-6xl mx-auto rounded-2xl backdrop-blur-xl bg-white/30 p-6 shadow-xl border border-white/30">
                 <form className="space-y-8">
                     {/* Trip Type Selection */}
