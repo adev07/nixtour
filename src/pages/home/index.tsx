@@ -19,16 +19,16 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <div
-        className="relative bg-cover bg-center h-[85vh] w-full pt-[110px]"
+        className="relative bg-cover bg-center sm:h-[85vh] h-[82vh] w-full sm:pt-[110px] sm:py-0 py-[20px]"
         style={{ backgroundImage: `url(${HeroBanner})` }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-35"></div>
+        <div className="absolute inset-0 bg-black bg-opacity-15"></div>
         <div className="relative z-10">
           <FlightSearch />
         </div>
       </div>
 
-      <div className="px-[124px]">
+      <div className="sm:px-[124px] px-6">
         {/* <div className="flex-1 flex items-center justify-center">
           <ImageCarousel images={carouselImages} />
         </div> */}
@@ -43,7 +43,7 @@ const Home = () => {
         </div>
         <div className="mt-5">
           <h2 className="text-2xl font-semibold mb-3">Why Book With Nixtour?</h2>
-          <div className="grid grid-cols-4">
+          <div className="grid sm:grid-cols-4 grid-cols-1">
             <img className="object-cover" src={Flexible} alt="" />
             <img className="object-cover" src={flight} alt="" />
             <img className="object-cover" src={Incredible} alt="" />

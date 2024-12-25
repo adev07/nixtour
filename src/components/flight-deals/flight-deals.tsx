@@ -26,11 +26,11 @@ const flightDeals: FlightDeal[] = [
 export default function FlightDeals() {
     return (
         <Card className="mx-auto p-6">
-            <div className="bg-gray-100 p-4 rounded-lg mb-6 flex justify-between items-center">
-                <div>
+            <div className="bg-gray-100 p-4 rounded-lg mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                <div className="mb-4 sm:mb-0">
                     <p className="text-gray-600 mb-2">Departing from</p>
                     <Select defaultValue="BLR">
-                        <SelectTrigger className="w-[200px] bg-white">
+                        <SelectTrigger className="w-full sm:w-[200px] bg-white">
                             <SelectValue placeholder="Select city" />
                         </SelectTrigger>
                         <SelectContent>
@@ -43,23 +43,23 @@ export default function FlightDeals() {
 
                 <div>
                     <p className="text-gray-600 mb-2">Travel Period</p>
-                    <Tabs defaultValue="jan" className="w-[300px]">
+                    <Tabs defaultValue="jan" className="w-full sm:w-[300px]">
                         <TabsList className="grid w-full grid-cols-3">
                             <TabsTrigger
                                 value="jan"
-                                className="data-[state=active]:bg-black data-[state=active]:text-white"
+                                className="data-[state=active]:bg-[#BC1110] data-[state=active]:text-white"
                             >
                                 Jan
                             </TabsTrigger>
                             <TabsTrigger
                                 value="feb"
-                                className="data-[state=active]:bg-transparent"
+                                className="data-[state=active]:bg-[#BC1110] data-[state=active]:text-white"
                             >
                                 Feb
                             </TabsTrigger>
                             <TabsTrigger
                                 value="mar"
-                                className="data-[state=active]:bg-transparent"
+                                className="data-[state=active]:bg-[#BC1110] data-[state=active]:text-white"
                             >
                                 Mar
                             </TabsTrigger>
@@ -72,9 +72,9 @@ export default function FlightDeals() {
                 {flightDeals.map((deal) => (
                     <div
                         key={deal.destination}
-                        className="grid grid-cols-3 py-4 border-b last:border-b-0"
+                        className="grid grid-cols-1 sm:grid-cols-3 py-4 border-b last:border-b-0"
                     >
-                        <div className="ml-[42px]">
+                        <div className="text-center sm:text-start sm:ml-4 ml-0">
                             <h3 className="text-base font-bold">To {deal.destination}</h3>
                         </div>
                         <div className="flex flex-col items-center justify-center">
@@ -84,9 +84,9 @@ export default function FlightDeals() {
                                 {deal.price}
                             </p>
                         </div>
-                        <div className="flex items-center justify-end">
+                        <div className="flex items-center justify-center sm:justify-end mt-4 sm:mt-0">
                             <Button
-                                className="bg-[#a30f0d] hover:bg-[#761A1A] text-white rounded-full px-10"
+                                className="bg-[#BC1110] hover:bg-[#BC1110]/90 text-white rounded-full px-10"
                             >
                                 BOOK NOW
                             </Button>
@@ -94,7 +94,7 @@ export default function FlightDeals() {
                     </div>
                 ))}
             </CardContent>
+
         </Card>
     )
 }
-

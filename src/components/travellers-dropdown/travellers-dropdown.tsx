@@ -35,7 +35,7 @@ export function TravelersDropdown({ travelers, travelClass, onUpdate }: Traveler
             <PopoverTrigger asChild>
                 <Button
                     variant="outline"
-                    className="w-full justify-start text-left font-normal rounded-[5px] bg-white/20 border-white/30"
+                    className="w-full h-14 mt-2 justify-start text-left font-normal rounded-[12px] bg-white border-white/30"
                 >
                     <Users className="mr-2 h-4 w-4" />
                     <span>{getTravelersText()} • {travelClass}</span>

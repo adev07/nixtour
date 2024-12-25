@@ -67,7 +67,7 @@ export default function Footer() {
                             className="flex-1 bg-white placeholder:text-gray-400 placeholder:text-start h-10"
                         />
                         <Button
-                            className="bg-[#8B1F1F] hover:bg-[#761A1A] text-white h-10"
+                            className="bg-[#BC1110] hover:bg-[#BC1110]/90 text-white h-10"
                         >
                             Subscribe
                         </Button>
@@ -101,7 +101,7 @@ export default function Footer() {
                         </div>
                         {/* Accreditation Logos and Copyright */}
                         <div className="flex flex-col justify-center items-start gap-4 pt-4">
-                            <div className="flex gap-8 items-center border-b border-[#8B1F1F]">
+                            <div className="flex sm:flex-row flex-col gap-8 items-center border-b border-[#8B1F1F]">
                                 <img
                                     src={ITA}
                                     alt="IATA Logo"

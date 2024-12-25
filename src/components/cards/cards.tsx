@@ -1,6 +1,6 @@
 import React from "react";
 import Slider, { Settings } from "react-slick";
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Ahamdabad from "../../assets/images/ahmedabad.jpg";
@@ -65,14 +65,14 @@ const TravelCarousel: React.FC = () => {
 
     return (
         <div className="mx-auto py-4 px-3">
-            <div className="flex justify-end mb-4">
+            {/* <div className="flex justify-end mb-4">
                 <Button
                     variant="outline"
                     className="border-[2px] border-black rounded-[6px] font-semibold hover:bg-gray-100 hover:text-white transition-all"
                 >
                     See more
                 </Button>
-            </div>
+            </div> */}
             <h2 className="text-2xl font-semibold mb-2">Fly Direct and Fast:</h2>
             <p className="text-gray-600 mb-4">Nonstop Options to Top Travel Spots</p>
             <Slider {...settings}>
