@@ -2,13 +2,13 @@ import logo from "../../assets/nixtour_logo.svg"
 
 export function Navbar() {
     return (
-        <header className="sticky top-0 z-50 w-full border-b bg-[#eee] py-6 px-16">
+        <header className="sticky top-0 z-50 w-full border-b bg-[#eee] py-4 px-16">
             <div className="container flex items-center justify-between">
                 <a href="/" className="flex items-center space-x-2">
                     <img
                         src={logo}
                         alt="NixTour Logo"
-                        className="h-16 w-auto"
+                        className="h-12 w-auto"
                     />
                 </a>
                 <nav className="flex items-center space-x-6">

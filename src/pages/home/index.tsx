@@ -1,8 +1,5 @@
-import { FlightSearch } from "../../components/flight-search/flight-search";
+import FlightSearch from "../../components/flight-search/flight-search";
 import { Navbar } from "../../components/navbar/navbar";
-import ImageCarousel from "../../components/image-carousel/image-carousel";
-import Aeroflat from "../../assets/images/Aerofloat.jpg";
-import Banner from "../../assets/images/Banner.jpg";
 import TravelCarousel from "../../components/cards/cards";
 import DomesticAirlines from "../../components/domestic-airlines/domestic-airlines";
 import InternationalAirline from "../../components/international-airlines/international-airlines";
@@ -14,23 +11,27 @@ import FlightDeals from "../../components/flight-deals/flight-deals";
 import { Button } from "../../components/ui/button";
 import FAQSection from "../../components/accordian/accordian";
 import Footer from "../../components/footer/footer";
+import HeroBanner from "../../assets/images/heroBanner.png";
 
 const Home = () => {
-  const carouselImages = [
-    { src: Aeroflat, alt: "Aeroflat" },
-    { src: Banner, alt: "Banner" },
-  ];
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <div className="px-[124px]">
-        <div>
+      <div
+        className="relative bg-cover bg-center h-[85vh] w-full pt-[110px]"
+        style={{ backgroundImage: `url(${HeroBanner})` }}
+      >
+        <div className="absolute inset-0 bg-black bg-opacity-35"></div>
+        <div className="relative z-10">
           <FlightSearch />
         </div>
-        <div className="flex-1 flex items-center justify-center">
+      </div>
+
+      <div className="px-[124px]">
+        {/* <div className="flex-1 flex items-center justify-center">
           <ImageCarousel images={carouselImages} />
-        </div>
+        </div> */}
         <div className="my-5">
           <TravelCarousel />
         </div>

@@ -9,7 +9,7 @@ import Tai from "../../assets/images/taai-red.png"
 export default function Footer() {
     return (
         <footer className="bg-[#eeeeee] pt-6 pb-6">
-            <div className="container mx-auto px-[80px]">
+            <div className="container mx-auto px-[36px]">
                 {/* Navigation Links Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10">
                     {/* Column 1 */}
