@@ -1,9 +1,9 @@
 import React, { Suspense } from 'react';
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import GroupBooking from '../pages/group-booking';
 
 const Home = React.lazy(() => import('../pages/home'));
-const GroupBooking = React.lazy(() => import('../pages/group-booking/'));
+
 
 const Router: React.FC = () => {
   return (

@@ -67,7 +67,7 @@ export default function FlightBooking() {
                         </div>
                         <div className="mt-4 md:mt-0">
                             <Button
-                                onClick={() => navigate("/group-booking")}
+                                onClick={() => navigate("/group-booking", { replace: true })}
                                 className="w-full md:w-auto px-8 py-4 bg-[#BC1110] hover:bg-[#BC1110]/90 text-white rounded-full transition-all font-semibold text-base"
                             >
                                 Group Booking
