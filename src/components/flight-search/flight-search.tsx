@@ -4,8 +4,10 @@ import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { DatePicker } from "antd";
 import { TravelersDropdown } from "../travellers-dropdown/travellers-dropdown";
-import { Calendar, User, PlaneTakeoff, PlaneLanding, Plane, ArrowLeftRight } from "lucide-react"; // Import icons
+import { Calendar, User, PlaneTakeoff, PlaneLanding, Plane, ArrowLeftRight } from "lucide-react";
 import type { Travelers, TravelClass } from "../../../types/booking";
+import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 
 export default function FlightBooking() {
     const [, setTripType] = useState("one-way");
@@ -18,6 +20,7 @@ export default function FlightBooking() {
         infants: 0,
     });
     const [travelClass, setTravelClass] = useState<TravelClass>("Economy");
+    const navigate = useNavigate();
 
     const handleTravelersUpdate = (newTravelers: Travelers, newClass: TravelClass) => {
         setTravelers(newTravelers);
@@ -64,6 +67,7 @@ export default function FlightBooking() {
                         </div>
                         <div className="mt-4 md:mt-0">
                             <Button
+                                onClick={() => navigate("/group-booking")}
                                 className="w-full md:w-auto px-8 py-4 bg-[#BC1110] hover:bg-[#BC1110]/90 text-white rounded-full transition-all font-semibold text-base"
                             >
                                 Group Booking
@@ -121,6 +125,9 @@ export default function FlightBooking() {
                             <DatePicker
                                 className="mt-2 w-full px-4 py-4 border border-gray-300 rounded-[12px] focus:outline-none"
                                 placeholder="Select date"
+                                disabledDate={(current) => {
+                                    return current && current.isBefore(dayjs().startOf('day'));
+                                }}
                             />
                         </div>
 
@@ -134,6 +141,9 @@ export default function FlightBooking() {
                                 <DatePicker
                                     className="w-full px-4 py-4 border border-gray-300 rounded-[12px] mt-2 focus:outline-none"
                                     placeholder="Select date"
+                                    disabledDate={(current) => {
+                                        return current && current.isBefore(dayjs().startOf('day'));
+                                    }}
                                 />
                             </div>
                         )}

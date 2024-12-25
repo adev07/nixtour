@@ -23,7 +23,7 @@ interface ArrowProps {
 const CustomArrow: React.FC<ArrowProps> = ({ onClick, arrowType }) => (
     <button
         className={`absolute top-1/2 transform -translate-y-1/2 z-10 ${arrowType === "prev" ? "left-[-30px]" : "right-[-30px]"
-            } bg-white text-black rounded-full shadow-md hover:shadow-lg focus:outline-none p-3 hover:bg-black`}
+            } bg-white text-black rounded-full shadow-md hover:shadow-lg focus:outline-none p-3 hover:bg-[#BC1110]`}
         onClick={onClick}
         aria-label={arrowType === "prev" ? "Previous Slide" : "Next Slide"}
     >

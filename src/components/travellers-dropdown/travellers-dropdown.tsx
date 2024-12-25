@@ -19,11 +19,13 @@ export function TravelersDropdown({ travelers, travelClass, onUpdate }: Traveler
     const [isOpen, setIsOpen] = useState(false)
 
     const updateCount = (type: keyof Travelers, increment: boolean) => {
-        const newCount = localTravelers[type] + (increment ? 1 : -1)
-        if (newCount >= 0 && newCount <= 9) {
-            setLocalTravelers(prev => ({ ...prev, [type]: newCount }))
+        const totalPassengers = Object.values(localTravelers).reduce((a, b) => a + b, 0);
+        const newCount = localTravelers[type] + (increment ? 1 : -1);
+
+        if (newCount >= 0 && (increment ? totalPassengers < 9 : true)) {
+            setLocalTravelers((prev) => ({ ...prev, [type]: newCount }));
         }
-    }
+    };
 
     const getTravelersText = () => {
         const total = Object.values(travelers).reduce((a, b) => a + b, 0)
@@ -41,7 +43,7 @@ export function TravelersDropdown({ travelers, travelClass, onUpdate }: Traveler
                     <span>{getTravelersText()} • {travelClass}</span>
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-80">
+            <PopoverContent className="w-[340px] rounded-[5px]">
                 <div className="space-y-4">
                     {/* Travelers Section */}
                     <div className="space-y-4">
@@ -136,7 +138,7 @@ export function TravelersDropdown({ travelers, travelClass, onUpdate }: Traveler
                                     variant="outline"
                                     className={cn(
                                         'w-full justify-center',
-                                        localClass === classType && 'bg-[#BC1110] text-white hover:bg-[#BC1110]/90'
+                                        localClass === classType && 'bg-[#BC1110] rounded-[5px] text-white hover:text-white hover:bg-[#BC1110]/90'
                                     )}
                                     onClick={() => setLocalClass(classType)}
                                 >
@@ -149,20 +151,21 @@ export function TravelersDropdown({ travelers, travelClass, onUpdate }: Traveler
                     {/* Action Buttons */}
                     <div className="flex justify-end gap-2 pt-4 border-t">
                         <Button
+                            className='rounded-[5px]'
                             variant="outline"
                             onClick={() => {
                                 setLocalTravelers(travelers)
                                 setLocalClass(travelClass)
-                                setIsOpen(false) // Close the popover
+                                setIsOpen(false)
                             }}
                         >
                             Cancel
                         </Button>
                         <Button
-                            className="bg-[#BC1110] hover:bg-[#BC1110]/90"
+                            className="bg-[#BC1110] hover:bg-[#BC1110]/90 rounded-[5px]"
                             onClick={() => {
                                 onUpdate(localTravelers, localClass)
-                                setIsOpen(false) // Close the popover
+                                setIsOpen(false)
                             }}
                         >
                             Done

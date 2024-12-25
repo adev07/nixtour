@@ -1,5 +1,4 @@
 import FlightSearch from "../../components/flight-search/flight-search";
-import { Navbar } from "../../components/navbar/navbar";
 import TravelCarousel from "../../components/cards/cards";
 import DomesticAirlines from "../../components/domestic-airlines/domestic-airlines";
 import InternationalAirline from "../../components/international-airlines/international-airlines";
@@ -10,14 +9,13 @@ import Help from "../../assets/images/help 24X7.png";
 import FlightDeals from "../../components/flight-deals/flight-deals";
 import { Button } from "../../components/ui/button";
 import FAQSection from "../../components/accordian/accordian";
-import Footer from "../../components/footer/footer";
 import HeroBanner from "../../assets/images/heroBanner.png";
 
 const Home = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+
       <div
         className="relative bg-cover bg-center h-screen sm:h-[85vh] min-h-[500px] w-full sm:pt-[110px] sm:py-0 py-[20px]"
         style={{ backgroundImage: `url(${HeroBanner})` }}
@@ -110,9 +108,6 @@ const Home = () => {
         <div>
           <FAQSection />
         </div>
-      </div>
-      <div className="mt-5">
-        <Footer />
       </div>
     </div>
   );
