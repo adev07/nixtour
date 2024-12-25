@@ -19,7 +19,7 @@ const Home = () => {
     <div className="min-h-screen bg-white">
       <Navbar />
       <div
-        className="relative bg-cover bg-center sm:h-[85vh] h-[82vh] w-full sm:pt-[110px] sm:py-0 py-[20px]"
+        className="relative bg-cover bg-center h-screen sm:h-[85vh] min-h-[500px] w-full sm:pt-[110px] sm:py-0 py-[20px]"
         style={{ backgroundImage: `url(${HeroBanner})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-15"></div>
@@ -27,7 +27,6 @@ const Home = () => {
           <FlightSearch />
         </div>
       </div>
-
       <div className="sm:px-[124px] px-6">
         {/* <div className="flex-1 flex items-center justify-center">
           <ImageCarousel images={carouselImages} />
