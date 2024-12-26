@@ -64,10 +64,10 @@ export default function Footer() {
                         <Input
                             type="email"
                             placeholder="Enter your email to subscribe deals and offers"
-                            className="flex-1 bg-white placeholder:text-gray-400 placeholder:text-start h-10"
+                            className="flex-1 rounded-[5px] bg-white placeholder:text-gray-400 placeholder:text-start h-10"
                         />
                         <Button
-                            className="bg-[#BC1110] hover:bg-[#BC1110]/90 text-white h-10"
+                            className="bg-[#BC1110] hover:bg-[#BC1110]/90 text-white h-10 rounded-[5px]"
                         >
                             Subscribe
                         </Button>
@@ -76,7 +76,7 @@ export default function Footer() {
 
                 {/* Company Info Section */}
                 <div className="pt-8 border-t border-[#8B1F1F]">
-                    <div className="flex gap-[92px]">
+                    <div className="flex sm:flex-row flex-col sm:gap-[92px]">
                         {/* Logo */}
                         <div className="">
                             <div>
@@ -100,28 +100,25 @@ export default function Footer() {
                             </p>
                         </div>
                         {/* Accreditation Logos and Copyright */}
-                        <div className="flex flex-col justify-center items-start gap-4 pt-4">
-                            <div className="flex sm:flex-row flex-col gap-8 items-center border-b border-[#8B1F1F]">
+                        <div className="flex flex-col justify-center items-start gap-4 pt-4 px-4 sm:px-8 lg:px-16">
+                            <div className="flex gap-4 w-full sm:gap-8 items-center justify-center border-b border-[#8B1F1F] pb-4">
                                 <img
                                     src={ITA}
                                     alt="IATA Logo"
-                                    width={140}
-                                    height={140}
+                                    className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] lg:w-[140px] lg:h-[140px] object-contain"
                                 />
                                 <img
                                     src={Skal}
                                     alt="SKAL Logo"
-                                    width={140}
-                                    height={140}
+                                    className="w-[60px] h-[60px] sm:w-[100px] sm:h-[100px] lg:w-[140px] lg:h-[140px] object-contain"
                                 />
                                 <img
                                     src={Tai}
                                     alt="Tai Logo"
-                                    width={80}
-                                    height={80}
+                                    className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] lg:w-[80px] lg:h-[80px] object-contain"
                                 />
                             </div>
-                            <p className="text-sm">
+                            <p className="text-sm text-center lg:text-left w-full">
                                 Copyright © 2024 - Nix tour India Pvt Ltd
                             </p>
                         </div>

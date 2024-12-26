@@ -6,7 +6,7 @@ import GroupBookingFlights from "../../components/group-booking-flights/group-bo
 
 function index() {
     return (
-        <div className="sm:px-[112px] px-6 min-h-screen">
+        <div className="lg:px-[112px] md:px-12 sm:px-6 px-6 min-h-screen">
             <div className="sm:pt-[40px] pt-5">
                 <h2 className="sm:text-2xl text-xl font-semibold mb-4">Group Booking in Flight & Corporate Travel Deals</h2>
             </div>
