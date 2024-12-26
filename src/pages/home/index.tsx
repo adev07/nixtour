@@ -9,7 +9,7 @@ import Help from "../../assets/images/help 24X7.png";
 import FlightDeals from "../../components/flight-deals/flight-deals";
 import { Button } from "../../components/ui/button";
 import FAQSection from "../../components/accordian/accordian";
-import HeroBanner from "../../assets/images/heroBanner.png";
+import HeroBanner from "../../assets/images/heroBanner.webp";
 
 const Home = () => {
 

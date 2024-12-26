@@ -95,7 +95,9 @@ export default function FlightBooking() {
                         <button
                             type="button"
                             onClick={swapCities}
-                            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors ${showReturn ? 'sm:mt-[-100px] mt-[-150px]' : 'sm:mt-[-40px] mt-[-100px]'}`}
+                            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors 
+                                ${showReturn ? 'sm:mt-[-99px] mt-[-156px]' : 'sm:mt-[-40px] mt-[-98px]'
+                                }`}
                             aria-label="Swap cities"
                         >
                             <ArrowLeftRight size={16} className="text-gray-700" />
