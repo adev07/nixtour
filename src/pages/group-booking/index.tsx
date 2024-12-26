@@ -1,8 +1,8 @@
-import DomesticAirlines from "../../components/domestic-airlines/domestic-airlines"
 import TravelForm from "../../components/travel-form/travel-form"
 import { Card, CardContent, CardHeader, CardTitle } from "../../components/ui/card"
 import { ClipboardList, DollarSign, Plane, Users } from 'lucide-react'
 import Map from "../../assets/svgs/map.svg"
+import GroupBookingFlights from "../../components/group-booking-flights/group-booking-flights"
 
 function index() {
     return (
@@ -23,7 +23,7 @@ function index() {
                 <p className="text-justify mt-1">So, without waiting any further, reach out to Nixtour right away and let us take care of all your group airline tickets and other bookings at a discounted air fares.</p>
             </div>
             <div className="py-5">
-                <DomesticAirlines />
+                <GroupBookingFlights />
             </div>
             <div className="space-y-8">
                 <div className="space-y-3">
@@ -101,7 +101,7 @@ function index() {
                     </Card>
                 </div>
             </div>
-            <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center pt-2">
                 <img className="object-cover" src={Map} alt="" />
             </div>
         </div>
