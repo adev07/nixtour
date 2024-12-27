@@ -73,7 +73,7 @@ const TravelCarousel: React.FC = () => {
                             <img
                                 src={destination.image}
                                 alt={destination.title}
-                                className="w-full sm:h-[200px] h-[300px] object-cover"
+                                className="w-full h-[300px] object-cover"
                             />
                         </div>
                         <div className="p-4">
