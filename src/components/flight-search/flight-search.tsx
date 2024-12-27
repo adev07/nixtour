@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
@@ -7,6 +7,7 @@ import { TravelersDropdown } from "../travellers-dropdown/travellers-dropdown";
 import { Calendar, User, PlaneTakeoff, PlaneLanding, Plane, ArrowLeftRight } from "lucide-react";
 import type { Travelers, TravelClass } from "../../../types/booking";
 import { useNavigate } from "react-router-dom";
+import { useCitiesStore } from "../../../stores/flightStore";
 import dayjs from "dayjs";
 
 export default function FlightBooking() {
@@ -22,7 +23,11 @@ export default function FlightBooking() {
     const [travelClass, setTravelClass] = useState<TravelClass>("Economy");
     const [onwardDate, setOnwardDate] = useState<dayjs.Dayjs | null>(null);
     const [, setReturnDate] = useState<dayjs.Dayjs | null>(null);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    const [inputFocus, setInputFocus] = useState<"from" | "to" | null>(null);
     const navigate = useNavigate();
+
+    const { cities, fetchCities, isLoading } = useCitiesStore();
 
     const handleTravelersUpdate = (newTravelers: Travelers, newClass: TravelClass) => {
         setTravelers(newTravelers);
@@ -34,6 +39,27 @@ export default function FlightBooking() {
         setFromCity(toCity);
         setToCity(temp);
     };
+
+    // Debouncing function
+    const debounce = (func: (...args: any[]) => void, delay: number) => {
+        let timer: NodeJS.Timeout;
+        return (...args: any[]) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => func(...args), delay);
+        };
+    };
+
+    const handleCityInput = useCallback(
+        debounce((prefix: string) => {
+            if (prefix.trim().length > 2) {
+                fetchCities(prefix);
+                setShowSuggestions(true);
+            } else {
+                setShowSuggestions(false);
+            }
+        }, 300),
+        []
+    );
 
     return (
         <div className="p-4">
@@ -92,10 +118,36 @@ export default function FlightBooking() {
                                 type="text"
                                 id="from"
                                 value={fromCity}
-                                onChange={(e) => setFromCity(e.target.value)}
+                                onChange={(e) => {
+                                    setFromCity(e.target.value);
+                                    handleCityInput(e.target.value);
+                                }}
+                                onFocus={() => setInputFocus("from")}
                                 placeholder="Enter city or airport"
                                 className="mt-2 w-full px-4 py-4 rounded-[12px] border border-gray-300 focus:outline-none"
                             />
+                            {showSuggestions && inputFocus === "from" && (
+                                <ul className="absolute z-10 bg-white border border-gray-200 shadow-lg rounded-md mt-2 max-h-60 overflow-auto w-auto">
+                                    {isLoading ? (
+                                        <li className="p-2 text-center">Loading...</li>
+                                    ) : cities.length > 0 ? (
+                                        cities.map((city) => (
+                                            <li
+                                                key={city.id}
+                                                onClick={() => {
+                                                    setFromCity(city.name);
+                                                    setShowSuggestions(false);
+                                                }}
+                                                className="p-2 hover:bg-gray-100 cursor-pointer"
+                                            >
+                                                {city.name}
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <li className="p-2 text-center">No results found</li>
+                                    )}
+                                </ul>
+                            )}
                         </div>
                         <button
                             type="button"
@@ -116,10 +168,36 @@ export default function FlightBooking() {
                                 type="text"
                                 id="to"
                                 value={toCity}
-                                onChange={(e) => setToCity(e.target.value)}
+                                onChange={(e) => {
+                                    setToCity(e.target.value);
+                                    handleCityInput(e.target.value);
+                                }}
+                                onFocus={() => setInputFocus("to")}
                                 placeholder="Enter city or airport"
                                 className="mt-2 w-full px-4 py-4 rounded-[12px] border border-gray-300 focus:outline-none"
                             />
+                            {showSuggestions && inputFocus === "to" && (
+                                <ul className="absolute z-10 bg-white border border-gray-200 shadow-lg rounded-md mt-2 max-h-60 overflow-auto w-auto">
+                                    {isLoading ? (
+                                        <li className="p-2 text-center">Loading...</li>
+                                    ) : cities.length > 0 ? (
+                                        cities.map((city) => (
+                                            <li
+                                                key={city.id}
+                                                onClick={() => {
+                                                    setToCity(city.name);
+                                                    setShowSuggestions(false);
+                                                }}
+                                                className="p-2 hover:bg-gray-100 cursor-pointer"
+                                            >
+                                                {city.name}
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <li className="p-2 text-center">No results found</li>
+                                    )}
+                                </ul>
+                            )}
                         </div>
 
                         {/* Departure */}
