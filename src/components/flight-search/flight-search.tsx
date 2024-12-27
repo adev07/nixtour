@@ -20,6 +20,8 @@ export default function FlightBooking() {
         infants: 0,
     });
     const [travelClass, setTravelClass] = useState<TravelClass>("Economy");
+    const [onwardDate, setOnwardDate] = useState<dayjs.Dayjs | null>(null);
+    const [, setReturnDate] = useState<dayjs.Dayjs | null>(null);
     const navigate = useNavigate();
 
     const handleTravelersUpdate = (newTravelers: Travelers, newClass: TravelClass) => {
@@ -34,7 +36,7 @@ export default function FlightBooking() {
     };
 
     return (
-        <div className=" p-4">
+        <div className="p-4">
             <div className="max-w-6xl mx-auto rounded-2xl backdrop-blur-xl bg-white/30 p-6 shadow-xl border border-white/30">
                 <form className="space-y-8">
                     {/* Trip Type Selection */}
@@ -43,8 +45,11 @@ export default function FlightBooking() {
                             <RadioGroup
                                 defaultValue="one-way"
                                 onValueChange={(value) => {
-                                    setTripType(value)
-                                    setShowReturn(value === "round-trip")
+                                    setTripType(value);
+                                    setShowReturn(value === "round-trip");
+                                    if (value !== "round-trip") {
+                                        setReturnDate(null);
+                                    }
                                 }}
                                 className="flex gap-6"
                             >
@@ -96,8 +101,7 @@ export default function FlightBooking() {
                             type="button"
                             onClick={swapCities}
                             className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors 
-                                ${showReturn ? 'sm:mt-[-99px] mt-[-156px]' : 'sm:mt-[-40px] mt-[-98px]'
-                                }`}
+                                ${showReturn ? "sm:mt-[-99px] mt-[-156px]" : "sm:mt-[-40px] mt-[-98px]"}`}
                             aria-label="Swap cities"
                         >
                             <ArrowLeftRight size={16} className="text-gray-700" />
@@ -128,8 +132,9 @@ export default function FlightBooking() {
                                 className="mt-2 w-full px-4 py-4 border border-gray-300 rounded-[12px] focus:outline-none"
                                 placeholder="Select date"
                                 disabledDate={(current) => {
-                                    return current && current.isBefore(dayjs().startOf('day'));
+                                    return current && current.isBefore(dayjs().startOf("day"));
                                 }}
+                                onChange={(date) => setOnwardDate(date)}
                             />
                         </div>
 
@@ -144,8 +149,12 @@ export default function FlightBooking() {
                                     className="w-full px-4 py-4 border border-gray-300 rounded-[12px] mt-2 focus:outline-none"
                                     placeholder="Select date"
                                     disabledDate={(current) => {
-                                        return current && current.isBefore(dayjs().startOf('day'));
+                                        return (
+                                            current &&
+                                            (current.isBefore(onwardDate?.startOf("day") || dayjs().startOf("day")))
+                                        );
                                     }}
+                                    onChange={(date) => setReturnDate(date)}
                                 />
                             </div>
                         )}
