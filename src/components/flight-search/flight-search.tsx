@@ -66,6 +66,9 @@ export default function FlightBooking() {
     );
 
     const handleSearchFlights = () => {
+        const fromAirportCode = fromCity.match(/\(([^)]+)\)/)?.[1] || ""; // Extract airport code from "fromCity"
+        const toAirportCode = toCity.match(/\(([^)]+)\)/)?.[1] || "";     // Extract airport code from "toCity"
+
         const url = new URL("https://fares.nixtour.com/Metabook/Home/Landing");
         const params: { [key: string]: string } = {
             CompanyId: "KN2182",
@@ -78,8 +81,8 @@ export default function FlightBooking() {
             AgentName: "",
             SearchType: "Flight",
             CabinClass: travelClass === "Economy" ? "3" : travelClass === "Business" ? "2" : travelClass === "First Class" ? "1" : "4",
-            Dep: "PAT",
-            Arr: "BLR",
+            Dep: fromAirportCode,
+            Arr: toAirportCode,
             DepDt: onwardDate ? onwardDate.format("DD-MMM-YYYY") : "",
             RetDt: returnDate ? returnDate.format("DD-MMM-YYYY") : "",
             Adt: travelers.adults.toString(),
@@ -108,12 +111,9 @@ export default function FlightBooking() {
         );
 
         console.log("Final URL:", url.toString());
-        console.log(params)
-
-
-        console.log(url.toString());
         window.location.href = url.toString();
     };
+
 
 
 
