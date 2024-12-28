@@ -4,14 +4,17 @@ import { Label } from "../ui/label";
 import { Button } from "../ui/button";
 import { DatePicker } from "antd";
 import { TravelersDropdown } from "../travellers-dropdown/travellers-dropdown";
-import { Calendar, User, PlaneTakeoff, PlaneLanding, Plane, ArrowLeftRight } from "lucide-react";
+import { Calendar, User, PlaneTakeoff, PlaneLanding, Plane, ArrowLeftRight } from 'lucide-react';
 import type { Travelers, TravelClass } from "../../../types/booking";
 import { useNavigate } from "react-router-dom";
 import { useCitiesStore } from "../../../stores/flightStore";
 import dayjs from "dayjs";
+import { v4 as uuidv4 } from 'uuid';
+
 
 export default function FlightBooking() {
-    const [, setTripType] = useState("one-way");
+    const [tripType, setTripType] = useState<"one-way" | "round-trip">("one-way");
+    const [returnDate, setReturnDate] = useState<dayjs.Dayjs | null>(null);
     const [showReturn, setShowReturn] = useState(false);
     const [fromCity, setFromCity] = useState("");
     const [toCity, setToCity] = useState("");
@@ -22,12 +25,13 @@ export default function FlightBooking() {
     });
     const [travelClass, setTravelClass] = useState<TravelClass>("Economy");
     const [onwardDate, setOnwardDate] = useState<dayjs.Dayjs | null>(null);
-    const [, setReturnDate] = useState<dayjs.Dayjs | null>(null);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [inputFocus, setInputFocus] = useState<"from" | "to" | null>(null);
     const navigate = useNavigate();
 
     const { cities, fetchCities, isLoading } = useCitiesStore();
+
+    console.log("Cities:", fromCity, toCity);
 
     const handleTravelersUpdate = (newTravelers: Travelers, newClass: TravelClass) => {
         setTravelers(newTravelers);
@@ -61,17 +65,74 @@ export default function FlightBooking() {
         []
     );
 
+    const handleSearchFlights = () => {
+        const url = new URL("https://fares.nixtour.com/Metabook/Home/Landing");
+        const params: { [key: string]: string } = {
+            CompanyId: "KN2182",
+            LanguageCode: "GB",
+            FlightMode: "I",
+            JourneyType: tripType === "round-trip" ? "R" : "O",
+            websiteId: "13671",
+            ClientId: "",
+            SalesChannel: "Online-DC",
+            AgentName: "",
+            SearchType: "Flight",
+            CabinClass: travelClass === "Economy" ? "3" : travelClass === "Business" ? "2" : travelClass === "First Class" ? "1" : "4",
+            Dep: "PAT",
+            Arr: "BLR",
+            DepDt: onwardDate ? onwardDate.format("DD-MMM-YYYY") : "",
+            RetDt: returnDate ? returnDate.format("DD-MMM-YYYY") : "",
+            Adt: travelers.adults.toString(),
+            Chd: travelers.children.toString(),
+            Inf: travelers.infants.toString(),
+            cl: travelClass === "Economy" ? "3" : travelClass === "Business" ? "2" : travelClass === "First Class" ? "1" : "4",
+            DirectFlight: "False",
+            IntAirline: "",
+            DepCity: fromCity,
+            ArrCity: toCity,
+            LCCRTChkBox: "",
+            DepDate: onwardDate ? onwardDate.format("DD-MMM-YYYY") : "",
+            RetDate: returnDate ? returnDate.format("DD-MMM-YYYY") : "",
+            Airline: "",
+            Flexi: "False",
+            comp_currency: "INR",
+            uid: uuidv4(),
+            DepCountryCode: "IN",
+            ArrCountryCode: "IN",
+            IsLogin: "false",
+            BranchId: "2214"
+        };
+
+        Object.keys(params).forEach((key) =>
+            url.searchParams.append(key, params[key as keyof typeof params] as string)
+        );
+
+        console.log("Final URL:", url.toString());
+        console.log(params)
+
+
+        console.log(url.toString());
+        window.location.href = url.toString();
+    };
+
+
+
     return (
         <div className="p-4">
             <div className="max-w-6xl mx-auto rounded-2xl backdrop-blur-xl bg-white/30 p-6 shadow-xl border border-white/30">
-                <form className="space-y-8">
+                <form className="space-y-8"
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        handleSearchFlights();
+                    }}
+                >
                     {/* Trip Type Selection */}
                     <div className="flex flex-col md:flex-row justify-between gap-6">
                         <div>
                             <RadioGroup
                                 defaultValue="one-way"
                                 onValueChange={(value) => {
-                                    setTripType(value);
+                                    setTripType(value as "one-way" | "round-trip");
                                     setShowReturn(value === "round-trip");
                                     if (value !== "round-trip") {
                                         setReturnDate(null);
@@ -79,7 +140,7 @@ export default function FlightBooking() {
                                 }}
                                 className="flex gap-6"
                             >
-                                {["one-way", "round-trip", "multi-city"].map((type) => (
+                                {["one-way", "round-trip"].map((type) => (
                                     <div key={type} className="flex items-center sm:space-x-2 space-x-1">
                                         <RadioGroupItem
                                             value={type}
@@ -123,7 +184,7 @@ export default function FlightBooking() {
                                     handleCityInput(e.target.value);
                                 }}
                                 onFocus={() => setInputFocus("from")}
-                                placeholder="Enter city or airport"
+                                placeholder="Enter city or airport code"
                                 className="mt-2 w-full px-4 py-4 rounded-[12px] border border-gray-300 focus:outline-none"
                             />
                             {showSuggestions && inputFocus === "from" && (
@@ -133,14 +194,14 @@ export default function FlightBooking() {
                                     ) : cities.length > 0 ? (
                                         cities.map((city) => (
                                             <li
-                                                key={city.id}
+                                                key={uuidv4()}
                                                 onClick={() => {
-                                                    setFromCity(city.name);
+                                                    setFromCity(`${city.CityName}, ${city.CountryName} - ${city.AirportName} (${city.AirportCode})`);
                                                     setShowSuggestions(false);
                                                 }}
                                                 className="p-2 hover:bg-gray-100 cursor-pointer"
                                             >
-                                                {city.name}
+                                                {city.CityName}, {city.CountryName} - {city.AirportName} ({city.AirportCode})
                                             </li>
                                         ))
                                     ) : (
@@ -173,7 +234,7 @@ export default function FlightBooking() {
                                     handleCityInput(e.target.value);
                                 }}
                                 onFocus={() => setInputFocus("to")}
-                                placeholder="Enter city or airport"
+                                placeholder="Enter city or airport code"
                                 className="mt-2 w-full px-4 py-4 rounded-[12px] border border-gray-300 focus:outline-none"
                             />
                             {showSuggestions && inputFocus === "to" && (
@@ -183,14 +244,14 @@ export default function FlightBooking() {
                                     ) : cities.length > 0 ? (
                                         cities.map((city) => (
                                             <li
-                                                key={city.id}
+                                                key={uuidv4()}
                                                 onClick={() => {
-                                                    setToCity(city.name);
+                                                    setToCity(`${city.CityName}, ${city.CountryName} - ${city.AirportName} (${city.AirportCode})`);
                                                     setShowSuggestions(false);
                                                 }}
                                                 className="p-2 hover:bg-gray-100 cursor-pointer"
                                             >
-                                                {city.name}
+                                                {city.CityName}, {city.CountryName} - {city.AirportName} ({city.AirportCode})
                                             </li>
                                         ))
                                     ) : (
@@ -247,6 +308,7 @@ export default function FlightBooking() {
                                 travelers={travelers}
                                 travelClass={travelClass}
                                 onUpdate={handleTravelersUpdate}
+                            // travelClasses={["Economy", "Business", "First Class", "Premium Economy"]}
                             />
                         </div>
                     </div>
@@ -266,3 +328,4 @@ export default function FlightBooking() {
         </div>
     );
 }
+
