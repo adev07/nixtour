@@ -11,7 +11,7 @@ export default function Footer() {
         <footer className="bg-[#eeeeee] pt-6 pb-6 mt-5">
             <div className="container mx-auto sm:px-[36px] px-4">
                 {/* Navigation Links Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pb-10">
                     {/* Column 1 */}
                     <div className="space-y-3">
                         <a href="#" className="block hover:underline">About Nixtour</a>
@@ -42,7 +42,7 @@ export default function Footer() {
                 </div>
 
                 {/* Social Media and Newsletter Section */}
-                <div className="py-8 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div className="sm:py-8 flex flex-col md:flex-row justify-between items-center sm:gap-8 gap-6">
                     {/* Social Media Icons */}
                     <div className="flex gap-6">
                         <a href="#" className="text-[#8B1F1F] hover:opacity-80">
@@ -75,7 +75,7 @@ export default function Footer() {
                 </div>
 
                 {/* Company Info Section */}
-                <div className="pt-8 border-t border-[#8B1F1F]">
+                <div className="pt-8 border-t border-[#8B1F1F] mt-4 sm:mt-0">
                     <div className="flex sm:flex-row flex-col sm:gap-[92px]">
                         {/* Logo */}
                         <div className="">

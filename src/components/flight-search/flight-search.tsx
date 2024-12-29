@@ -66,8 +66,8 @@ export default function FlightBooking() {
     );
 
     const handleSearchFlights = () => {
-        const fromAirportCode = fromCity.match(/\(([^)]+)\)/)?.[1] || ""; // Extract airport code from "fromCity"
-        const toAirportCode = toCity.match(/\(([^)]+)\)/)?.[1] || "";     // Extract airport code from "toCity"
+        const fromAirportCode = fromCity.match(/\(([^)]+)\)/)?.[1] || "";
+        const toAirportCode = toCity.match(/\(([^)]+)\)/)?.[1] || "";
 
         const url = new URL("https://fares.nixtour.com/Metabook/Home/Landing");
         const params: { [key: string]: string } = {
@@ -113,8 +113,6 @@ export default function FlightBooking() {
         console.log("Final URL:", url.toString());
         window.location.href = url.toString();
     };
-
-
 
 
     return (
@@ -308,7 +306,6 @@ export default function FlightBooking() {
                                 travelers={travelers}
                                 travelClass={travelClass}
                                 onUpdate={handleTravelersUpdate}
-                            // travelClasses={["Economy", "Business", "First Class", "Premium Economy"]}
                             />
                         </div>
                     </div>

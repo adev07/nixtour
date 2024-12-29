@@ -12,7 +12,7 @@ import Airfrance from "../../assets/images/Air-France.png";
 import Srilankan from "../../assets/images/sri-lankan.png";
 import BritishAir from "../../assets/images/british-air.png";
 import AirCanada from "../../assets/images/air-canada.png";
-import AeroFloat from "../../assets/images/Aerofloat.jpg";
+import AeroFloat from "../../assets/images/aeroflot.png";
 
 interface Airline {
     name: string;

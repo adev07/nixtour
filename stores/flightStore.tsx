@@ -36,17 +36,13 @@ export const useCitiesStore = create<CitiesStore>((set) => ({
 
             console.log("Raw response:", response.data);
 
-            // Extract the JSON string from the <string> tag using a regular expression
             const regex = /<string[^>]*>(.*?)<\/string>/s;
             const match = response.data.match(regex);
 
             if (match && match[1]) {
-                // Fix the JSON string format by adding quotes around the keys
                 const citiesJsonString = match[1].replace(/([a-zA-Z0-9_]+)(?=\s*:)/g, '"$1"');
-
-                // Parse the fixed JSON string into an actual array of cities
                 const cities = JSON.parse(citiesJsonString) || [];
-                console.log("Parsed cities data:", cities); // Log the final cities data
+                console.log("Parsed cities data:", cities);
 
                 set({
                     cities: cities,
