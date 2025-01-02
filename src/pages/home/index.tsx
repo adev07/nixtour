@@ -48,7 +48,7 @@ const Home = () => {
           </div>
         </div>
         <div className="my-5">
-          <h2 className="text-2xl font-semibold mb-4 text-center lg:text-left">Best Deals on Flight Tickets</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-left">Best Deals on Flight Tickets</h2>
           <FlightDeals />
         </div>
         <div className="mx-auto mb-8">

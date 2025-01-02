@@ -89,7 +89,7 @@ const InternationalAirline: React.FC = () => {
     };
 
     return (
-        <div className="mx-auto py-4 px-3">
+        <div className="mx-auto py-4 sm:px-3">
             <h2 className="text-2xl font-semibold mb-4">Popular International Airlines</h2>
             <div className="relative">
                 <CustomArrow

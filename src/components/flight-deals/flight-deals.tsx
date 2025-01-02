@@ -86,7 +86,7 @@ export default function FlightDeals() {
                         </div>
                         <div className="flex items-center justify-center sm:justify-end">
                             <Button
-                                className="bg-[#BC1110] hover:bg-[#BC1110]/90 text-white text-[10px] sm:text-xs rounded-full sm:px-10"
+                                className="bg-[#BC1110] font-semibold hover:bg-[#BC1110]/90 text-white text-[10px] sm:text-xs rounded-full sm:px-10"
                             >
                                 BOOK NOW
                             </Button>
