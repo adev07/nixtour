@@ -39,8 +39,8 @@ const Home = () => {
           <InternationalAirline />
         </div>
         <div className="mt-5">
-          <h2 className="text-2xl font-semibold mb-3 text-center lg:text-left">Why Book With Nixtour?</h2>
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-6">
+          <h2 className="text-2xl font-semibold mb-3 text-left">Why Book With Nixtour?</h2>
+          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 sm:gap-6 gap-0">
             <img className="object-cover" src={Flexible} alt="Flexible booking" />
             <img className="object-cover" src={flight} alt="No flight cancellation fee" />
             <img className="object-cover" src={Incredible} alt="Incredible deals" />

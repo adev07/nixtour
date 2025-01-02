@@ -129,7 +129,7 @@ export default function Footer() {
             {/* WhatsApp Button */}
             <a
                 href="#"
-                className="fixed bottom-6 right-6 bg-green-500 rounded-full p-3 text-white hover:bg-green-600 shadow-lg"
+                className="fixed bottom-6 right-6 bg-green-500 rounded-full p-3 text-white hover:bg-green-600 shadow-lg z-[1000]"
                 aria-label="Chat on WhatsApp"
             >
                 <svg

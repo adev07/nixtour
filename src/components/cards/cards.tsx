@@ -63,7 +63,7 @@ const TravelCarousel: React.FC = () => {
     };
 
     return (
-        <div className="mx-auto py-4 px-3">
+        <div className="mx-auto py-4 sm:px-3">
             <h2 className="text-2xl font-semibold mb-2">Fly Direct and Fast:</h2>
             <p className="text-gray-600 mb-4">Nonstop Options to Top Travel Spots</p>
             <Slider {...settings}>

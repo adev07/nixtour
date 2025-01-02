@@ -75,7 +75,7 @@ const DomesticAirlines: React.FC = () => {
             },
             {
                 breakpoint: 480,
-                settings: { slidesToShow: 1 },
+                settings: { slidesToShow: 2 },
             },
         ],
     };
@@ -89,7 +89,7 @@ const DomesticAirlines: React.FC = () => {
     };
 
     return (
-        <div className="mx-auto py-4 px-3">
+        <div className="mx-auto py-4 sm:px-3">
             <h2 className="text-2xl font-semibold mb-4">Popular Domestic Airlines</h2>
             <div className="relative">
                 <CustomArrow
