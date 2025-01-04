@@ -14,7 +14,7 @@ export default function Footer() {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-8 pb-10">
                     {/* Column 1 */}
                     <div className="space-y-3">
-                        <a href="#" className="block hover:underline">About Nixtour</a>
+                        <a href="/about-us" className="block hover:underline">About Nixtour</a>
                         <a href="#" className="block hover:underline">Offers</a>
                         <a href="#" className="block hover:underline">Our Services</a>
                         <a href="#" className="block hover:underline">Domestic Airlines</a>
@@ -25,10 +25,10 @@ export default function Footer() {
 
                     {/* Column 2 */}
                     <div className="space-y-3">
-                        <a href="#" className="block hover:underline">Who we are?</a>
-                        <a href="#" className="block hover:underline">Privacy Policy</a>
+                        <a href="/about-us" className="block hover:underline">Who we are?</a>
+                        <a href="/privacy-policy" className="block hover:underline">Privacy Policy</a>
                         <a href="#" className="block hover:underline">Terms & Conditions</a>
-                        <a href="#" className="block hover:underline">Contact Us</a>
+                        <a href="/contact-us" className="block hover:underline">Contact Us</a>
                         <a href="#" className="block hover:underline">Agents</a>
                     </div>
 
