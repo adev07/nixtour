@@ -3,10 +3,9 @@ import { Card, CardContent } from "../../components/ui/card"
 
 export default function ContactPage() {
     return (
-        <div className="min-h-screen bg-gray-50 sm:py-12 py-6 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen sm:py-12 py-6 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <h1 className="text-2xl sm:text-3xl font-bold text-center sm:mb-12 mb-6 text-[#BC1110]">Contact us</h1>
-
                 <div className="grid lg:grid-cols-2 gap-8">
                     <div className="space-y-6">
                         <Card>
