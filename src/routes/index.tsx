@@ -4,6 +4,7 @@ import GroupBooking from '../pages/group-booking';
 import AboutUs from '../pages/about-us';
 import PrivacyPolicy from '../pages/privacy-policy';
 import ContactUs from '../pages/contact-us';
+import TermsConditions from '../pages/terms-conditions';
 
 const Home = React.lazy(() => import('../pages/home'));
 
@@ -18,6 +19,7 @@ const Router: React.FC = () => {
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/user-agreement" element={<TermsConditions />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

@@ -27,7 +27,7 @@ export default function Footer() {
                     <div className="space-y-3">
                         <a href="/about-us" className="block hover:underline">Who we are?</a>
                         <a href="/privacy-policy" className="block hover:underline">Privacy Policy</a>
-                        <a href="#" className="block hover:underline">Terms & Conditions</a>
+                        <a href="/user-agreement" className="block hover:underline">Terms & Conditions</a>
                         <a href="/contact-us" className="block hover:underline">Contact Us</a>
                         <a href="#" className="block hover:underline">Agents</a>
                     </div>
