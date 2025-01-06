@@ -29,9 +29,9 @@ export function Navbar() {
                     />
                 </a>
                 <nav className="hidden md:flex items-center space-x-6">
-                    <NavLink href="/manage-booking">Manage Booking</NavLink>
-                    <NavLink href="/agent-login">Agent Login</NavLink>
-                    <NavLink href="/agency-signup">Agency Signup</NavLink>
+                    <NavLink href="https://fares.nixtour.com/online3s/UrlLandingPage.aspx?langcode=GB&ReqType=BOOKINGSTATUS&comid=KN2182&webid=13671">Manage Booking</NavLink>
+                    <NavLink href="https://agents.nixtour.com/B2BDashBoard/asp/Login.aspx">Agent Login</NavLink>
+                    <NavLink href=" https://fares.nixtour.com/Online3s/UrlLandingPage.aspx?ReqType=agt&comid=KN2182&webid=13671&langCode=GB&callfrom=true">Agency Signup</NavLink>
                 </nav>
                 <button
                     className="md:hidden p-2 text-primary hover:text-[#8B0000] transition-colors duration-200"
@@ -44,9 +44,9 @@ export function Navbar() {
             {isMenuOpen && (
                 <div className="md:hidden">
                     <nav className="flex flex-col space-y-4 px-4 py-6 bg-white/90 backdrop-blur-md">
-                        <NavLink href="/manage-booking">Manage Booking</NavLink>
-                        <NavLink href="/agent-login">Agent Login</NavLink>
-                        <NavLink href="/agency-signup">Agency Signup</NavLink>
+                        <NavLink href="https://fares.nixtour.com/online3s/UrlLandingPage.aspx?langcode=GB&ReqType=BOOKINGSTATUS&comid=KN2182&webid=13671">Manage Booking</NavLink>
+                        <NavLink href="https://agents.nixtour.com/B2BDashBoard/asp/Login.aspx">Agent Login</NavLink>
+                        <NavLink href=" https://fares.nixtour.com/Online3s/UrlLandingPage.aspx?ReqType=agt&comid=KN2182&webid=13671&langCode=GB&callfrom=true">Agency Signup</NavLink>
                     </nav>
                 </div>
             )}
